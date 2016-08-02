@@ -1,0 +1,15 @@
+{
+  "name": "wiki-blenda",
+  "version": "1.0.0",
+  "description": "Blend a ghost and an iGEM wiki",
+  "main": "blend.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Leo Fidjeland<hello@leo.wtf>",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.74.0",
+    "request-promise": "^4.1.0"
+  }
+}
