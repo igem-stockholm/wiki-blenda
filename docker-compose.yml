@@ -1,0 +1,10 @@
+blenda:
+  image: node
+  volumes:
+    - .:/opt/blenda
+    - /mnt/volume-fra1-01/wiki2016:/opt/wiki:ro
+  environment:
+    - NODE_ENV=development
+    - GHOST_URL=http://localhost
+    - IGEM_USER=user
+    - IGEM_PASSWORD=password
