@@ -1,25 +1,33 @@
 var request = require('request-promise')
 request = request.defaults({jar: true, followAllRedirects: true})
 
+const user = process.env.IGEM_USER
+const password = process.env.IGEM_PASSWORD
 const loginBase = 'https://igem.org/Login2'
+const ghostBase = 'https://wiki.igem.se'
+const editBase = 'http://2016.igem.org/wiki/index.php?action=edit&title=Team:Stockholm'
 
-request.post(loginBase).form({username: 'leofidjeland', password: 'pass', Login: 'Login', return_to: ''}).then((body) => {
-  console.log('success')
+request.post(loginBase).form({username: user, password: password, Login: 'Login', return_to: ''}).then((body) => {
+  console.log(body)
+  processEverything()
 }).catch((error) => {
   console.error(error)
 })
 
-// curl 'http://2016.igem.org/wiki/index.php?title=Team:Stockholm&action=submit'
-// -H 'Cookie: 2016_igem_org_session=2g5epu5dllvud37mqc5fr1oc36; session=01715ecd15eb09a2298ba22980f17a77; 2016_igem_orgLoggedOut=1470132948; 2016_igem_orgUserID=747; 2016_igem_orgUserName=Leofidjeland; 2016_igem_orgToken=2eab6c96c16e6c904c0ad4309ebd8590'
-// -H 'Origin: http://2016.igem.org'
-// -H 'Accept-Encoding: gzip, deflate'
-// -H 'Accept-Language: sv-SE,sv;q=0.8,en-US;q=0.6,en;q=0.4'
-// -H 'Upgrade-Insecure-Requests: 1'
-// -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
-// -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryBFRHswfAddpRJgHl'
-// -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
-// -H 'Cache-Control: max-age=0'
-// -H 'Referer: http://2016.igem.org/wiki/index.php?title=Team:Stockholm&action=edit'
-// -H 'Connection: keep-alive'
-// --data-binary $'------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="wpAntispam"\r\n\r\n\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="wpSection"\r\n\r\n\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="wpStarttime"\r\n\r\n20160802102531\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="wpEdittime"\r\n\r\n20160628194603\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="wpScrolltop"\r\n\r\n338\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="wpAutoSummary"\r\n\r\nd41d8cd98f00b204e9800998ecf8427e\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="oldid"\r\n\r\n0\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="format"\r\n\r\ntext/x-wiki\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="model"\r\n\r\nwikitext\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="wpTextbox1"\r\n\r\n{{Stockholm}}\r\n<html>\r\n\r\n<div class="column full_size" >\r\n<img src="http://2016.igem.org/wiki/images/thumb/b/b5/Frame_1200.png/800px-Frame_1200.png">\r\n</div>\r\n\r\n<h5>The Team</h5>\r\n\r\n<p>\r\niGEM Stockholm 2016 team consists of 14 members from diverse backgrounds and different schools; from biotechnology to medicine, to design, currently or previously studying at Karolinska Institutet, KTH Royal Institute of Technology and Konstfack, the University College of Arts, Crafts and Design. \r\n</p>\r\n<p>\r\nOur diverse team collectively came up with different project ideas after brainstorming in smaller groups. Subsequently each subgroup presented their prospective ideas for the whole team to vote for the two finalists. These two ideas were further researched and developed to fulfill criteria based on the iGEM requirements. We saw so much potential in both ideas that we fused them into our final core project. \r\n</p>\r\n\r\n<h5>The Problem - Chronic Wounds</h5>\r\n<p>\r\nWe are focusing on a common medical issue: chronic wounds. Around 1% of individuals living in the western world will suffer from a chronic, non-healing wound in their lifetime, with those affected by diabetes, poor vascular health and increasing age being particularly at risk. It is a painful and expensive problem that does not receive the attention it deserves. \r\nThe wounds may begin as an insignificant break in the skin which fails to heal and serves as a breeding ground for bacteria. When the bacteria reach a certain population density they develop the formation of biofilms. The biofilm is an important bacterial survival mechanism; a 3D structure built upon the wound surface to facilitate colonisation of multiple strains of bacteria, providing channels for nutrients to flow through and mediate resistance against both the immune system of the patient and conventional antibiotic treatment. \r\n</p>\r\n<h5>The Solution - Protein Infused Spider Silk</h5>\r\n<p>\r\nWe aim to use spider silk combined with functional proteins to degrade biofilm in chronic wounds. By incorporating additional proteins the biofilm structure will be destabilized and various functions disrupted. Spider silk is an ideal material for this application since it is one of the strongest biomaterials in the world.\r\n</p>\r\n<p>\r\nWe will use three BioBrick parts for the expression of proteins that target different components of biofilm: Lysostaphin, Nuclease 2 and Esp. Lysostaphin is used to attack cell walls and degrade exopolysaccharide which make up the complex 3D structure of biofilm. Nuclease is an enzyme that digests extracellular DNA, resulting in the disruption and destabilisation of biofilm. Esp is used to break down various structural and metabolic proteins that make up biofilm and cleaves off virulence factors from the cell wall. \r\n</p>\r\n<p>\r\nTo attach the expressed proteins to the spider silk, we will use sortase A. This is a transpeptidase used for the formation of peptide bonds between proteins with recognition motifs LPETGG and an oligo-glycine sequence. We will tag each expressed protein with LPETGG on the C-terminus and the spider silk has an already existing glycine on the N-terminus. We will also isolate srtA gene from staphylococcus aureus to create our own BioBrick for sortase expression. To test the efficacy of our wound dressing, we are forming a staphylococcal biofilm to be treated with our modified spider silk and observed using crystal violet assay. \r\n</p>\r\n<p>\r\nAnd finally we would like to contribute to the medical field with our invention that targets biofilm formation in chronic wounds. We really hope to be a part of a bigger movement to draw attention to this subject and get one step closer to treating chronic wounds.\r\n</p>\r\n\r\n</html>\r\n\r\ntesting\r\n\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="wpSummary"\r\n\r\nEdit Summary\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="wpWatchthis"\r\n\r\n1\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="wpSave"\r\n\r\nSave page\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="wpEditToken"\r\n\r\n72bc17e2bc20347676fc929a86cad796+\\\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl\r\nContent-Disposition: form-data; name="wpUltimateParam"\r\n\r\n1\r\n------WebKitFormBoundaryBFRHswfAddpRJgHl--\r\n'
-// --compressed
+const processEverything = function () {
+  const pages = {
+    '/team': '/Team'
+  }
+
+  for (const page in pages) {
+    getGhost(page).then((newContent) => {
+      console.log(newContent)
+    })
+  }
+}
+
+var getGhost = function (page) {
+  return request.get(ghostBase + page).then((body) => {
+    return Promise.resolve(body)
+  })
+}
