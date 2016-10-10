@@ -6,5 +6,6 @@ blenda:
   environment:
     - NODE_ENV=development
     - GHOST_LOCATION=/opt/wiki
+    - GHOST_URL=https://wiki.igem.se
     - IGEM_USER=leofidjeland
     - IGEM_PASSWORD=I8f4dmegk#6jm
