@@ -1,10 +1,10 @@
 blenda:
   image: node
   volumes:
-    - .:/opt/blenda
-    - /mnt/volume-fra1-01/wiki2016:/opt/wiki:ro
+    - ./src:/opt/blenda
+    - ./images:/opt/wiki/images:ro
   environment:
     - NODE_ENV=development
     - GHOST_LOCATION=/opt/wiki
-    - IGEM_USER=user
-    - IGEM_PASSWORD=password
+    - IGEM_USER=leofidjeland
+    - IGEM_PASSWORD=I8f4dmegk#6jm

@@ -9,6 +9,7 @@
   "author": "Leo Fidjeland<hello@leo.wtf>",
   "license": "MIT",
   "dependencies": {
+    "htmlparser2": "^3.9.1",
     "request": "^2.74.0",
     "request-promise": "^4.1.0",
     "walk": "^2.3.9"
