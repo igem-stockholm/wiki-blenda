@@ -74,6 +74,7 @@ var uploadImageToWiki = function (root, filename, token) {
     wpWatchthis: '0',
     wpUpload: 'Upload file',
     title: 'Special:Upload',
+    wpUploadIgnoreWarning: 'Ignore warning and save file anyway',
     // Pass data via Streams
     wpUploadFile: fs.createReadStream(root + '/' + filename),
     wpEditToken: token
