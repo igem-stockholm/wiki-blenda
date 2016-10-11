@@ -26,6 +26,7 @@ request.post(loginBase).form({username: user, password: password, Login: 'Login'
 
 const processEverything = function () {
   const pages = [
+    ['', ''],
     ['/project', '/Project'],
     ['/in-short', '/In-short'],
     ['/our-path', '/Our-path'],
