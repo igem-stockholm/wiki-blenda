@@ -1,5 +1,6 @@
 var request = require('request-promise')
 var htmlparser = require('htmlparser2')
+let cheerio = require('cheerio')
 
 request = request.defaults({jar: true, followAllRedirects: true})
 
@@ -18,7 +19,7 @@ const submitBase = 'http://2016.igem.org/wiki/index.php?action=submit&title=Team
 console.log('Logging in...')
 request.post(loginBase).form({username: user, password: password, Login: 'Login', return_to: ''}).then((body) => {
   // console.log(body)
-  console.log('success')
+  console.log('Logged in!')
   return processEverything()
 }).catch((error) => {
   console.error(error)
@@ -69,7 +70,7 @@ const processEverything = function () {
       return processPage(next[0], next[1])
     })
   }, Promise.resolve()).then(function () {
-    console.log('all done')
+    console.log('Script finished successfully!')
   })
 }
 
@@ -80,12 +81,31 @@ var processPage = function (oldUrl, newUrl) {
     newContent = newContent.substring(newContent.lastIndexOf('<main class="content">'), newContent.lastIndexOf('</main>') + 7)
     newContent = '{{Template:Stockholm}}<html><div class="site-wrapper post-template">'.concat(newContent)
     newContent = newContent.concat('</div></html>{{Template:Stockholm/Footer}}')
+    return processImages(newContent)
+  }).then((newContent) => {
     newPage = newContent
-
     return getToken(newUrl)
   }).then((tokens) => {
     return editPage(newUrl, tokens, newPage)
   })
+}
+
+var processImages = function (content) {
+  // var promises = []
+  let $ = cheerio.load(content)
+
+  $('img').filter(function (i, el) {
+    return $(this).attr('src').indexOf('/content/images/') === 0
+  }).each(function (i, elem) {
+    let newLink = newFileName($(this).attr('src'))
+    $(this).replaceWith('[[File:' + newLink + '|link=]]')
+  })
+
+  var newContent = $.html()
+
+  newContent = newContent.replace(/\[\[File:/g, '</html>[[File:').replace(/\|link=\]\]/g, '|link=]]<html>')
+
+  return Promise.resolve(newContent)
 }
 
 var getToken = function (page) {
@@ -114,6 +134,11 @@ var getToken = function (page) {
       resolve(tokens)
     })
   })
+}
+
+const newFileName = function (path) {
+  // remove /content/images/
+  return fileNameBase + path.substr(16).split('/').join('-')
 }
 
 var editPage = function (page, tokens, newContent) {
