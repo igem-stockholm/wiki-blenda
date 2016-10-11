@@ -1,6 +1,5 @@
 var request = require('request-promise')
 var htmlparser = require('htmlparser2')
-var fs = require('fs')
 
 request = request.defaults({jar: true, followAllRedirects: true})
 
@@ -26,34 +25,66 @@ request.post(loginBase).form({username: user, password: password, Login: 'Login'
 })
 
 const processEverything = function () {
-  const pages = {
-    '/team': '/Team',
-    '/attributions': '/Attributions',
-    '/collaborations': '/Collaborations'
-  }
+  const pages = [
+    ['/project', '/Project'],
+    ['/in-short', '/In-short'],
+    ['/our-path', '/Our-path'],
+    ['/background', '/Background'],
+    ['/combat-proteins', '/Combat-proteins'],
+    // ['/sortase', '/Sortase'],
+    ['/parts', '/Parts'],
+    ['/collection', '/Collection'],
+    ['/composites', '/Composites'],
+    ['/wetlab', '/Wetlab'],
+    ['/experiments', '/Experiments'],
+    ['/lab-book', '/Lab-book'],
+    ['/protocols', '/Protocols'],
+    ['/results', '/Results'],
+    ['/proof-of-concept', '/Proof-of-concept'],
+    ['/demonstrate', '/Demonstrate'],
+    ['/practises', '/Practises'],
+    ['/teaching', '/Teaching'],
+    ['/evolving', '/Evolving'],
+    // ['/collaboration', '/Collaboration'],
+    ['/health', '/Health'],
+    ['/integrated', '/Integrated'],
+    ['/team', '/Team'],
+    ['/collaborations', '/Collaborations'],
+    ['/attributions', '/Attributions'],
+    ['/sponsors', '/Sponsors'],
+    ['/notebook', '/Notebook'],
+    ['/nic', '/NiC'],
+    // ['/nic-workshops', '/NiC-workshops'],
+    // ['/mini-jamboree', '/Mini-jamboree'],
+    // ['/photo-album', '/Photo-album'],
+    ['/safety', '/Safety'],
+    ['/patients-in-mind', '/Patients-in-mind'],
+    ['/safety-card', '/Safety-card']
+  ]
 
-  var promises = []
-  for (const page in pages) {
-    let newPage
-    promises.push(getGhost(page).then((newContent) => {
-      // Get everything between the main tags
-      newContent = newContent.substring(newContent.lastIndexOf('<main class="content">'), newContent.lastIndexOf('</main>') + 7)
-      newContent = '{{Template:Stockholm}}<html><div class="site-wrapper post-template">'.concat(newContent)
-      newContent = newContent.concat('</div></html>{{Template:Stockholm/Footer}}')
-      newPage = newContent
-
-      return getToken(pages[page])
-    }).then((tokens) => {
-      return editPage(pages[page], tokens, newPage)
+  // Execute all pages sequentially
+  pages.reduce(function (cur, next) {
+    return cur.then(function () {
+      return processPage(next[0], next[1])
     })
-  )
-  }
-
-  return Promise.all(promises)
+  }, Promise.resolve()).then(function () {
+    console.log('all done')
+  })
 }
 
-var getGhost = function (page) {
-  return request.get(ghostBase + page)
+var processPage = function (oldUrl, newUrl) {
+  let newPage
+  return request.get(ghostBase + oldUrl).then((newContent) => {
+    // Get everything between the main tags
+    newContent = newContent.substring(newContent.lastIndexOf('<main class="content">'), newContent.lastIndexOf('</main>') + 7)
+    newContent = '{{Template:Stockholm}}<html><div class="site-wrapper post-template">'.concat(newContent)
+    newContent = newContent.concat('</div></html>{{Template:Stockholm/Footer}}')
+    newPage = newContent
+
+    return getToken(newUrl)
+  }).then((tokens) => {
+    return editPage(newUrl, tokens, newPage)
+  })
 }
 
 var getToken = function (page) {
