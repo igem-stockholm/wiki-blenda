@@ -8,11 +8,7 @@ const user = process.env.IGEM_USER
 const password = process.env.IGEM_PASSWORD
 const loginBase = 'https://igem.org/Login2'
 const ghostBase = process.env.GHOST_URL
-const assetsBase = ghostBase + '/themes/wiki-2016/assets/'
-const contentBase = ghostBase + '/'
 const fileNameBase = 'T--Stockholm--'
-const fileBase = 'http://2016.igem.org/File:T--Stockholm--'
-const uploadUrl = 'http://2016.igem.org/Special:Upload'
 const editBase = 'http://2016.igem.org/wiki/index.php?action=edit&title=Team:Stockholm'
 const submitBase = 'http://2016.igem.org/wiki/index.php?action=submit&title=Team:Stockholm'
 
@@ -35,30 +31,27 @@ const processEverything = function () {
     ['/combat-proteins', '/Combat-proteins'],
     // ['/sortase', '/Sortase'],
     ['/parts', '/Parts'],
-    ['/collection', '/Collection'],
-    ['/composites', '/Composites'],
+    ['/collection', '/Part_Collection'],
+    ['/composites', '/Composite_Part'],
     ['/wetlab', '/Wetlab'],
     ['/experiments', '/Experiments'],
-    ['/lab-book', '/Lab-book'],
+    ['/lab-book', '/Labbook'],
     ['/protocols', '/Protocols'],
     ['/results', '/Results'],
-    ['/proof-of-concept', '/Proof-of-concept'],
+    ['/proof-of-concept', '/Proof'],
     ['/demonstrate', '/Demonstrate'],
-    ['/practises', '/Practises'],
+    ['/practises', '/Human_Practices'],
     ['/teaching', '/Teaching'],
     ['/evolving', '/Evolving'],
-    // ['/collaboration', '/Collaboration'],
+    ['/community', '/Community'],
     ['/health', '/Health'],
-    ['/integrated', '/Integrated'],
+    ['/integrated', '/HP/Gold'],
     ['/team', '/Team'],
     ['/collaborations', '/Collaborations'],
     ['/attributions', '/Attributions'],
     ['/sponsors', '/Sponsors'],
     ['/notebook', '/Notebook'],
     ['/nic', '/NiC'],
-    // ['/nic-workshops', '/NiC-workshops'],
-    // ['/mini-jamboree', '/Mini-jamboree'],
-    // ['/photo-album', '/Photo-album'],
     ['/safety', '/Safety'],
     ['/patients-in-mind', '/Patients-in-mind'],
     ['/safety-card', '/Safety-card']
