@@ -26,6 +26,7 @@ const processEverything = function () {
     ['', ''],
     ['/description', '/Description'],
     ['/parts', '/Parts'],
+    ['/basic-parts', '/Basic_Parts'],
     ['/part-collection', '/Part_Collection'],
     ['/experiments', '/Experiments'],
     ['/lab-book', '/Labbook'],
