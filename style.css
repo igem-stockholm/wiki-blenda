@@ -107,11 +107,11 @@ table { border-collapse: collapse; border-spacing: 0; }
 /* Import the font file with the icons in it */
 @font-face {
 font-family: "casper-icons";
-src:url("../fonts/casper-icons.eot?v=1");
-src:url("../fonts/casper-icons.eot?v=1#iefix") format("embedded-opentype"),
-url("../fonts/casper-icons.woff?v=1") format("woff"),
-url("../fonts/casper-icons.ttf?v=1") format("truetype"),
-url("../fonts/casper-icons.svg?v=1#icons") format("svg");
+src:url("http://2016.igem.org/wiki/images/0/0e/T--Stockholm--casper-icons.eot?v=1");
+src:url("http://2016.igem.org/wiki/images/0/0e/T--Stockholm--casper-icons.eot?v=1#iefix") format("embedded-opentype"),
+url("http://2016.igem.org/wiki/images/d/db/T--Stockholm--casper-icons.woff?v=1") format("woff"),
+url("http://2016.igem.org/wiki/images/a/ad/T--Stockholm--casper-icons.ttf?v=1") format("truetype"),
+url("http://2016.igem.org/wiki/images/5/54/T--Stockholm--casper-icons-svg.svg?v=1#icons") format("svg");
 font-weight: normal;
 font-style: normal;
 }
