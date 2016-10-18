@@ -244,12 +244,18 @@ font-size: 2rem;
 }
 
 a {
-color: #4A4A4A;
-transition: color 0.3s ease;
+    color: #4A4A4A;
+    transition: color 0.3s ease;
+    text-decoration: underline;
 }
 
 a:hover {
-color: #111;
+    color: #111 !important;
+}
+
+a:visited {
+  color: #4A4A4A;
+  text-decoration: underline;
 }
 
 a.ref {
