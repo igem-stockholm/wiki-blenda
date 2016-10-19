@@ -2,6 +2,37 @@
   <style>
   /********************************* DEFAULT WIKI SETTINGS  ********************************/
 
+  #bodyContent a[href ^="https://"], .link-https {
+       padding-right: 0;
+  }
+
+  @font-face {
+    font-family: 'Raleway';
+    font-weight: 400;
+    font-style: normal;
+    src: local('Raleway'),
+         local('Raleway-regular'),
+         url('http://2016.igem.org/wiki/images/c/c9/T--Stockholm--Raleway-regular.woff') format('woff'),
+         url('http://2016.igem.org/wiki/images/7/72/T--Stockholm--Raleway-regular.ttf') format('truetype'),
+         url('http://2016.igem.org/wiki/images/6/6a/T--Stockholm--Raleway-regular.svg#Raleway') format('svg');
+  }
+
+  @font-face {
+    font-family: 'Lato';
+    font-weight: 400;
+    font-style: normal;
+    src: local('Lato Regular'),
+         local('Lato-regular'),
+         url('http://2016.igem.org/wiki/images/0/06/T--Stockholm--Lato-regular.woff') format('woff'),
+         url('http://2016.igem.org/wiki/images/0/05/T--Stockholm--Lato-regular.ttf') format('truetype'),
+         url('http://2016.igem.org/wiki/images/d/d7/T--Stockholm--Lato-regular.svg#Raleway') format('svg');
+  }
+
+  .mw-content-ltr ul, .mw-content-rtl .mw-content-ltr ul {
+       margin: 0 0 31.5px 0;
+       padding: 0 0 0 30px;
+  }
+
   #top_menu_inside {
       line-height: normal;
   }
@@ -58,7 +89,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="stylesheet" type="text/css" href="http://2016.igem.org/Template:Stockholm/CSS?action=raw&ctype=text/css" />
-<link href="//fonts.googleapis.com/css?family=Lato|Raleway&subset=latin-ext" rel="stylesheet">
 <div class="post-template nav-closed">
   <a href="#" class="nav-close">
     <div class="nav-close-cross">
@@ -78,12 +108,14 @@
         <div class="nav-project" role="presentation">
           <a href="/Team:Stockholm/Description">Project</a>
           <div class="nav-sublevel">
-            <a href="/Team:Stockholm/Description#in-short">In Short</a>
-            <a href="/Team:Stockholm/Description#our-path">Our Path</a>
-            <a href="/Team:Stockholm/Description#background">Background</a>
-            <a href="/Team:Stockholm/Description#project">Our Project</a>
-            <a href="/Team:Stockholm/Description#combat-proteins">Combat Proteins</a>
-            <a href="/Team:Stockholm/Description#sortase">Sortase A</a>
+            <a href="/Team:Stockholm/Description#inshort">In Short</a>
+            <a href="/Team:Stockholm/Description#ourpath">Our Path</a>
+            <a href="/Team:Stockholm/Description#biofilm">Background</a>
+            <a href="/Team:Stockholm/Description#ourproject">Our Project</a>
+            <a href="/Team:Stockholm/Description#combatproteins">Combat Proteins</a>
+            <a href="/Team:Stockholm/Description#sortasea">Sortase A</a>
+            <a href="/Team:Stockholm/Future">Future</a>
+            <a href="/Team:Stockholm/Medals">Medal achievements</a>
           </div>
         </div>
         <div class="nav-parts" role="presentation">
@@ -103,14 +135,14 @@
           </div>
         </div>
         <div class="nav-results" role="presentation">
-          <a href="/Team:Stockholm/Results">Results</a>
+          <a href="/Team:Stockholm/Proof">Results</a>
           <div class="nav-sublevel">
-            <a href="/Team:Stockholm/Results#nuc">Nuc</a>
-            <a href="/Team:Stockholm/Results#lys">Lys</a>
-            <a href="/Team:Stockholm/Results#def">Def</a>
-            <a href="/Team:Stockholm/Results#eb">EB</a>
-            <a href="/Team:Stockholm/Results#sorta">Sort A</a>
             <a href="/Team:Stockholm/Proof">Proof of concept</a>
+            <a href="/Team:Stockholm/Results-nuc">Nuc</a>
+            <a href="/Team:Stockholm/Results-lys">Lys</a>
+            <a href="/Team:Stockholm/Results-def">Def</a>
+            <a href="/Team:Stockholm/Results-esp">Esp</a>
+            <a href="/Team:Stockholm/Results-sortase-a">Sort A</a>
           </div>
         </div>
         <div class="nav-practises" role="presentation">

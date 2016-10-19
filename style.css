@@ -245,7 +245,6 @@ h6 {
 a {
     color: #4A4A4A;
     transition: color 0.3s ease;
-    text-decoration: underline;
 }
 
 a:hover {
@@ -1256,7 +1255,7 @@ body:not(.post-template) .post-title {
    text column to break out. */
 .post-content img {
     display: block;
-    max-width: 126%;
+    max-width: 100%;
     height: auto;
     padding: 0.6em 0;
     /* Centers an image by (1) pushing its left edge to the
@@ -1755,6 +1754,7 @@ body:not(.post-template) .post-title {
 .sponsors {
   display: flex;
   flex-direction: column;
+  text-align: center;
   width: 100%;
 }
 
