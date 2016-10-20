@@ -2,7 +2,7 @@ blenda:
   image: node
   volumes:
     - ./src:/opt/blenda
-    - ./images:/opt/wiki/images:ro
+    - ./images:/opt/wiki/images
   environment:
     - NODE_ENV=development
     - GHOST_LOCATION=/opt/wiki

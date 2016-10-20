@@ -23,27 +23,33 @@ request.post(loginBase).form({username: user, password: password, Login: 'Login'
 
 const processEverything = function () {
   const pages = [
-    ['', ''],
-    ['/description', '/Description'],
-    ['/parts', '/Parts'],
-    ['/basic-parts', '/Basic_Parts'],
-    ['/part-collection', '/Part_Collection'],
-    ['/experiments', '/Experiments'],
-    ['/lab-book', '/Labbook'],
-    ['/protocols', '/Protocols'],
-    ['/proof-of-concept', '/Proof'],
-    ['/results', '/Results'],
-    ['/practises', '/HP/Gold'],
-    ['/card', '/HP/Silver'],
-    ['/integrated_practices', '/Integrated_practices'],
-    ['/engagement', '/Engagement'],
-    ['/team', '/Team'],
-    ['/collaborations', '/Collaborations'],
-    ['/attributions', '/Attributions'],
-    ['/sponsors', '/Sponsors'],
-    ['/diary', '/Diary'],
-    ['/nic', '/NiC'],
-    ['/safety', '/Safety']
+    // ['', ''],
+    // ['/description', '/Description'],
+    // ['/parts', '/Parts'],
+    // ['/basic-parts', '/Basic_Parts'],
+    // ['/part-collection', '/Part_Collection'],
+    // ['/experiments', '/Experiments'],
+    // ['/lab-book', '/Labbook'],
+    // ['/protocols', '/Protocols'],
+    // ['/proof-of-concept', '/Proof'],
+    ['/practises', '/HP/Gold']
+    // ['/card', '/HP/Silver'],
+    // ['/integrated_practices', '/Integrated_practices'],
+    // ['/engagement', '/Engagement']
+    // ['/team', '/Team']
+    // ['/collaborations', '/Collaborations'],
+    // ['/attributions', '/Attributions'],
+    // ['/sponsors', '/Sponsors'],
+    // ['/diary', '/Diary'],
+    // ['/nic', '/NiC'],
+    // ['/safety', '/Safety'],
+    // ['/medal-achievements', '/Medals'],
+    // ['/futuristic-ideas', '/Future'],
+    // ['/results-nuc', '/Results-nuc'],
+    // ['/results-lys', '/Results-lys']
+    // ['/results-def', '/Results-def'],
+    // ['/results-esp', '/Results-esp']
+    // ['/results-sortase-a', '/Results-sortase-a']
   ]
 
   // Execute all pages sequentially

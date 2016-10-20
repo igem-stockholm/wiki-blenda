@@ -85,5 +85,9 @@ var uploadImageToWiki = function (root, filename, token) {
       return console.error('upload failed:', err)
     }
     console.log('Upload successful: ' + newFileName(root, filename))
+    fs.unlink(root + '/' + filename, function (err) {
+      if (err) return console.log(err)
+      console.log(root + '/' + filename + ' deleted successfully')
+    })
   })
 }
